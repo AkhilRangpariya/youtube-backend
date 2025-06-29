@@ -10,6 +10,7 @@ class ApiError extends Error {
         if(stack){
             this.stack = stack;
         } else{
+            // take from Node.js we communicate in which case we show error for which context
             Error.captureStackTrace(this, this.constructor);
         }
     }

@@ -6,10 +6,11 @@ import dotenv from 'dotenv';
 import app from './app.js';
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
+import { DB_NAME } from './constants.js';
 
 // const app = express();
 dotenv.config({
-    path: "./env"
+    path: "./.env"
 });
 
 // app.use => applicable to sue when you do some configuration or some middleware use 
@@ -24,6 +25,7 @@ app.use(express.json({ limit: "16mb" }));
 app.use(express.urlencoded({ extended: true, limit: "16mb" }));
 // store a file folder image things in public folder in own server
 app.use(express.static('public'));
+// secure with cookies store and write with server 
 app.use(cookieParser());
 
 connectDB()
